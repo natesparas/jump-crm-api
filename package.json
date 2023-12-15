@@ -1,0 +1,32 @@
+{
+    "name": "jumpsolutions-be",
+    "version": "1.0.0",
+    "description": "jumpsolutions backend",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest --testTimeout=5000",
+        "start": "nodemon index.js"
+    },
+    "author": "Jonathan Esparas",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.2",
+        "morgan": "^1.10.0",
+        "mysql": "^2.18.1",
+        "mysql2": "^3.5.2",
+        "nodemon": "^3.0.1",
+        "sequelize": "^6.34.0"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "jest": "^29.7.0",
+        "superagent": "^8.1.2",
+        "supertest": "^6.3.3"
+    }
+}
