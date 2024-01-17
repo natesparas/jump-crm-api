@@ -1,5 +1,5 @@
-const db = require('../models/index');
-const UserAccount = db.userAccounts;
+const db = require('../models/index')
+const UserAccount = db.userAccounts
 
 const getUserAccounts = async (req, res) => {
     try {
@@ -140,11 +140,9 @@ const getUserAccounts = async (req, res) => {
 // }
 
 const getUserProfile = async (req, res) => {
-
     const user = await UserAccount.findByPk(req.user.id, { attributes: { exclude: ['password'] } })
 
     if (user) {
-
         const data = {
             user: user,
             accessToken: req.token

@@ -69,7 +69,8 @@ const mockSalesPerSKU = async () => {
                         part_no: 'TS512GMTE110S',
                         item_code: 3590,
                         item_name: 'Transcend',
-                        item_desc: '512GB SSD (INTERNAL), M.2, PCIE, 2280 (3D TLC), DRAM LESS5 years limited warranty',
+                        item_desc:
+                            '512GB SSD (INTERNAL), M.2, PCIE, 2280 (3D TLC), DRAM LESS5 years limited warranty',
                         qty: 65,
                         selling_price: '2800.00',
                         supplier_cost: '2200.00',

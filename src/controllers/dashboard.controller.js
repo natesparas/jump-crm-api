@@ -1,4 +1,8 @@
-const { dashboardTotalSales, dashboardSalesAccountManager, dashboardSalesPerSKU } = require('../services/dashboard.service')
+const {
+    dashboardTotalSales,
+    dashboardSalesAccountManager,
+    dashboardSalesPerSKU
+} = require('../services/dashboard.service')
 
 const getTotalSales = async (req, res) => {
     try {

@@ -1,4 +1,4 @@
-const db = require('./db.service');
+const db = require('./db.service')
 
 async function getUsername(username) {
     const results = await db.query(
@@ -16,9 +16,9 @@ async function login(page = 1) {
         `SELECT id, name, released_year, githut_rank, pypl_rank, tiobe_rank 
       FROM programming_languages LIMIT ?,?`,
         [offset, config.listPerPage]
-    );
-    const data = helper.emptyOrRows(rows);
-    const meta = { page };
+    )
+    const data = helper.emptyOrRows(rows)
+    const meta = { page }
 
     return {
         data,
@@ -28,5 +28,5 @@ async function login(page = 1) {
 
 module.exports = {
     getUsername,
-    login,
+    login
 }

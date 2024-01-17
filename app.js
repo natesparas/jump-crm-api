@@ -30,10 +30,12 @@ const app = express()
 // });
 
 // middleware
-app.use(cors({
-    origin: process.env.BASE_URL,
-    credentials: true
-}))
+app.use(
+    cors({
+        origin: process.env.BASE_URL,
+        credentials: true
+    })
+)
 
 // parse requests of content-type - application/json
 app.use(express.json())

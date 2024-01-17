@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "test": "mocha tests/*.js",
-        "start": "nodemon index.js"
+        "start": "nodemon index.js",
+        "prettier:format": "prettier --write \"**/*.{ts,tsx,js,md,mdx,css,yaml}\"",
+        "prettier:check:ci": "prettier --check \"**/*.{ts,tsx,js,md,mdx,css,yaml}\""
     },
     "author": "Jonathan Esparas",
     "license": "ISC",
@@ -29,6 +31,7 @@
         "chai": "^4.3.10",
         "chai-as-promised": "^7.1.1",
         "mocha": "^10.2.0",
+        "prettier": "3.2.4",
         "sequelize-mock": "^0.10.2",
         "sinon": "^17.0.1",
         "superagent": "^8.1.2",

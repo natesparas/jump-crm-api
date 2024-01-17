@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
             defaultValue: Sequelize.NOW
         }
-    });
+    })
 
-    return User;
+    return User
 }
