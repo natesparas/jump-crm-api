@@ -1,6 +1,6 @@
 const authService = require('../services/authService')
-const db = require('../models/index');
-const Users = db.userAccounts;
+const db = require('../models/index')
+const Users = db.userAccounts
 const {
     hashPassword,
     comparePassword,
@@ -24,9 +24,9 @@ const loginUser = async (req, res) => {
             })
         }
 
-        const user = await Users.findOne({ where: { user_name: user_name } });
+        const user = await Users.findOne({ where: { user_name: user_name } })
         if (!user) {
-            return res.status(400).send({ message: "Username not found" });
+            return res.status(400).send({ message: 'Username not found' })
         }
 
         // Check if password match
@@ -46,11 +46,11 @@ const loginUser = async (req, res) => {
 
             const refreshToken = generateRefreshToken(payload)
 
-            // Create secure cookie with refresh token 
+            // Create secure cookie with refresh token
             res.cookie('refreshToken', refreshToken, {
-                httpOnly: true, //accessible only by web server 
+                httpOnly: true, //accessible only by web server
                 secure: true, //https
-                sameSite: 'None', //cross-site cookie 
+                sameSite: 'None', //cross-site cookie
                 maxAge: process.env.COOKIE_REFRESH_EXPIRATION //cookie expiry: set to match rT (1hr)
             })
 
@@ -147,22 +147,18 @@ const refreshToken = async (req, res) => {
 
     const refreshToken = cookies.refreshToken
 
-    jwt.verify(
-        refreshToken,
-        process.env.REFRESH_TOKEN_SECRET,
-        async (err, decoded) => {
-            if (err) return res.status(403).json({ message: 'Session Expired' })
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, async (err, decoded) => {
+        if (err) return res.status(403).json({ message: 'Session Expired' })
 
-            const user = await Users.findOne({ where: { id: decoded.id } });
+        const user = await Users.findOne({ where: { id: decoded.id } })
 
-            if (!user) return res.status(401).json({ message: 'Unauthorized' })
+        if (!user) return res.status(401).json({ message: 'Unauthorized' })
 
-            const payload = { id: decoded.id, email: decoded.email }
-            const accessToken = generateAccessToken(payload)
+        const payload = { id: decoded.id, email: decoded.email }
+        const accessToken = generateAccessToken(payload)
 
-            res.json({ accessToken })
-        }
-    )
+        res.json({ accessToken })
+    })
 }
 
 module.exports = {

@@ -1,46 +1,51 @@
-const request = require("supertest");
-const sinon = require('sinon');
-const { expect } = require('chai');
-const app = require('../app');
-const jwt = require('jsonwebtoken');
-const db = require('../src/models/index');
-const { dashboardTotalSales, dashboardSalesAccountManager, dashboardSalesPerSKU } = require("../src/services/dashboard.service");
-const { mockSalesPerSKU } = require("./mockData/dashboardSalesPerSKU");
+const request = require('supertest')
+const sinon = require('sinon')
+const { expect } = require('chai')
+const app = require('../app')
+const jwt = require('jsonwebtoken')
+const db = require('../src/models/index')
+const {
+    dashboardTotalSales,
+    dashboardSalesAccountManager,
+    dashboardSalesPerSKU
+} = require('../src/services/dashboard.service')
+const { mockSalesPerSKU } = require('./mockData/dashboardSalesPerSKU')
 const transSOHDR = db.transSOHDR
 
 describe('Dashboard Endpoint Unit-Testing', () => {
-
     before(() => {
         // Mock the behavior of jwt.verify to always return a valid user
         sinon.stub(jwt, 'verify').callsFake((token, secret, callback) => {
-            callback(null, { id: 'mockUserId' }); // Assuming the token is always valid for the mock user
-        });
-    });
+            callback(null, { id: 'mockUserId' }) // Assuming the token is always valid for the mock user
+        })
+    })
 
     after(() => {
         // Restore the original authentication middleware after tests
-        sinon.restore();
-    });
+        sinon.restore()
+    })
 
-    const fakeResult = [{
-        so_no: 'PS-02368',
-        account_mngr: 'Alisa Anne L. Demeterio',
-        so_date: '2023-01-30T13:51:03.000Z',
-        so_count: 1,
-        n_sum_total: '144500.00'
-    }]
+    const fakeResult = [
+        {
+            so_no: 'PS-02368',
+            account_mngr: 'Alisa Anne L. Demeterio',
+            so_date: '2023-01-30T13:51:03.000Z',
+            so_count: 1,
+            n_sum_total: '144500.00'
+        }
+    ]
     sinon.stub(transSOHDR, 'findAll').returns(fakeResult)
 
     it('should get the total sales', async () => {
         // const response = await request(app).get('/api/dashboard/getTotalSales').query({ day: 0 });
         const response = await dashboardTotalSales({ day: 0 })
         // expect(response.status).to.equal(200);
-        expect(response).to.be.an('object');
-    });
+        expect(response).to.be.an('object')
+    })
 
     it('should get the sales per account manager', async () => {
         const response = await dashboardSalesAccountManager({ day: 0 })
-        expect(response).to.be.an('array');
+        expect(response).to.be.an('array')
     })
 
     // it('should get the sales per sku', async () => {
@@ -49,8 +54,7 @@ describe('Dashboard Endpoint Unit-Testing', () => {
     //     console.log(response);
     //     expect(response).to.be.an('array');
     // })
-
-});
+})
 
 describe('--- Dashboard Endpoint Unit-Testing ---', () => {
     it('should get the sales per sku', async () => {
@@ -60,23 +64,20 @@ describe('--- Dashboard Endpoint Unit-Testing ---', () => {
         const response = await dashboardSalesPerSKU({ day: 0 })
 
         // expect(response).to.be.an('array');
-        expect(response).to.be.exist;
-        expect(response).to.not.be.empty;
+        expect(response).to.be.exist
+        expect(response).to.not.be.empty
     })
-});
-
+})
 
 // describe('getUserById', () => {
 //     it('should return user data for a valid ID', async () => {
 //         // const user = await request(app).get('/api/dashboard/getTotalSales').query({ day: 0 });
-
 
 //         // Mock the database function to return a predefined user object
 //         getTotalSales.mockResolvedValue({ id: 1, name: 'John Doe' });
 //         // Make a request to the API endpoint
 //         const response = await request(app).get('/api/dashboard/getTotalSales').query({ day: 0 });
 //         console.log(response);
-
 
 //         // expect(user).toEqual({ id: 1, name: 'John Doe' });
 //     });
@@ -97,7 +98,6 @@ describe('--- Dashboard Endpoint Unit-Testing ---', () => {
 // const mockToken = jwt.sign(mockPayload, process.env.JWT_SECRET, {
 //     expiresIn: process.env.ACCESS_TOKEN_EXPIRATION
 // })
-
 
 /*
     TODO: Dashboard

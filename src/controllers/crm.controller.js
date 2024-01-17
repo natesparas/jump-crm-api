@@ -15,20 +15,30 @@ const { getStages, getProducts, getProductPerType } = require('../utils/crm')
 const perStage = async (req, res) => {
     const { day } = req.query
 
-    const currDate = new Date();
+    const currDate = new Date()
     const currYear = currDate.getFullYear()
-    const currMonth = currDate.getMonth() + 1;
+    const currMonth = currDate.getMonth() + 1
 
-    let whereCondition = '';
+    let whereCondition = ''
 
-    if (day == 0) { // current date
+    if (day == 0) {
+        // current date
         whereCondition = 'AND DATE(trans_proposal_hdr.prop_date) = NOW()'
-    } else if (day == 1) { // month
-        whereCondition = 'AND MONTH(trans_proposal_hdr.prop_date) = ' + currMonth + ' AND YEAR(trans_proposal_hdr.prop_date) = ' + currYear
-    } else if (day == 2) { // year
+    } else if (day == 1) {
+        // month
+        whereCondition =
+            'AND MONTH(trans_proposal_hdr.prop_date) = ' +
+            currMonth +
+            ' AND YEAR(trans_proposal_hdr.prop_date) = ' +
+            currYear
+    } else if (day == 2) {
+        // year
         whereCondition = 'AND YEAR(trans_proposal_hdr.prop_date) = ' + currYear
-    } else if (day == 3) { // quarter
-        whereCondition = 'AND QUARTER(trans_proposal_hdr.prop_date) = QUARTER(CURDATE()) AND YEAR(trans_proposal_hdr.prop_date) = ' + currYear
+    } else if (day == 3) {
+        // quarter
+        whereCondition =
+            'AND QUARTER(trans_proposal_hdr.prop_date) = QUARTER(CURDATE()) AND YEAR(trans_proposal_hdr.prop_date) = ' +
+            currYear
     } else if (day == 4) {
         // whereCondition = "AND DATE(trans_proposal_hdr.prop_date) BETWEEN '" + startDate + "' AND '" + endDate + "'"
     }
@@ -64,20 +74,30 @@ const perStage = async (req, res) => {
 const proposalByProduct = async (req, res) => {
     const { day } = req.query
 
-    const currDate = new Date();
+    const currDate = new Date()
     const currYear = currDate.getFullYear()
-    const currMonth = currDate.getMonth() + 1;
+    const currMonth = currDate.getMonth() + 1
 
-    let whereCondition = '';
+    let whereCondition = ''
 
-    if (day == 0) { // current date
+    if (day == 0) {
+        // current date
         whereCondition = 'AND DATE(trans_proposal_hdr.prop_date) = NOW()'
-    } else if (day == 1) { // month
-        whereCondition = 'AND MONTH(trans_proposal_hdr.prop_date) = ' + currMonth + ' AND YEAR(trans_proposal_hdr.prop_date) = ' + currYear
-    } else if (day == 2) { // year
+    } else if (day == 1) {
+        // month
+        whereCondition =
+            'AND MONTH(trans_proposal_hdr.prop_date) = ' +
+            currMonth +
+            ' AND YEAR(trans_proposal_hdr.prop_date) = ' +
+            currYear
+    } else if (day == 2) {
+        // year
         whereCondition = 'AND YEAR(trans_proposal_hdr.prop_date) = ' + currYear
-    } else if (day == 3) { // quarter
-        whereCondition = 'AND QUARTER(trans_proposal_hdr.prop_date) = QUARTER(CURDATE()) AND YEAR(trans_proposal_hdr.prop_date) = ' + currYear
+    } else if (day == 3) {
+        // quarter
+        whereCondition =
+            'AND QUARTER(trans_proposal_hdr.prop_date) = QUARTER(CURDATE()) AND YEAR(trans_proposal_hdr.prop_date) = ' +
+            currYear
     } else if (day == 4) {
         // whereCondition = "AND DATE(trans_proposal_hdr.prop_date) BETWEEN '" + startDate + "' AND '" + endDate + "'"
     }
@@ -109,20 +129,30 @@ const proposalByProduct = async (req, res) => {
 const proposalPerProductType = async (req, res) => {
     const { day } = req.query
 
-    const currDate = new Date();
+    const currDate = new Date()
     const currYear = currDate.getFullYear()
-    const currMonth = currDate.getMonth() + 1;
+    const currMonth = currDate.getMonth() + 1
 
-    let whereCondition = '';
+    let whereCondition = ''
 
-    if (day == 0) { // current date
+    if (day == 0) {
+        // current date
         whereCondition = 'AND DATE(trans_proposal_hdr.prop_date) = NOW()'
-    } else if (day == 1) { // month
-        whereCondition = 'AND MONTH(trans_proposal_hdr.prop_date) = ' + currMonth + ' AND YEAR(trans_proposal_hdr.prop_date) = ' + currYear
-    } else if (day == 2) { // year
+    } else if (day == 1) {
+        // month
+        whereCondition =
+            'AND MONTH(trans_proposal_hdr.prop_date) = ' +
+            currMonth +
+            ' AND YEAR(trans_proposal_hdr.prop_date) = ' +
+            currYear
+    } else if (day == 2) {
+        // year
         whereCondition = 'AND YEAR(trans_proposal_hdr.prop_date) = ' + currYear
-    } else if (day == 3) { // quarter
-        whereCondition = 'AND QUARTER(trans_proposal_hdr.prop_date) = QUARTER(CURDATE()) AND YEAR(trans_proposal_hdr.prop_date) = ' + currYear
+    } else if (day == 3) {
+        // quarter
+        whereCondition =
+            'AND QUARTER(trans_proposal_hdr.prop_date) = QUARTER(CURDATE()) AND YEAR(trans_proposal_hdr.prop_date) = ' +
+            currYear
     } else if (day == 4) {
         // whereCondition = "AND DATE(trans_proposal_hdr.prop_date) BETWEEN '" + startDate + "' AND '" + endDate + "'"
     }

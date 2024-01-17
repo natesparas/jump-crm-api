@@ -6,55 +6,55 @@ module.exports = (sequelize, DataTypes) => {
         //     autoIncrement: true
         // },
         user_type: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         password: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         last_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         first_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         middle_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         full_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         email: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         mobile: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         tel_no: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         position: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         signature: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         account_head: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         user_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         status: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         add_by: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         add_date: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
         }
-    });
+    })
 
-    return userAccounts;
+    return userAccounts
 }

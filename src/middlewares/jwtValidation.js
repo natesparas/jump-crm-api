@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const { isTokenExpired, generateAccessToken } = require('../utils/auth')
-const db = require('../models/index');
-const Users = db.userAccounts;
+const db = require('../models/index')
+const Users = db.userAccounts
 
 const jwtValidation = async (req, res, next) => {
     // const token = req.header('Authorization')
@@ -37,10 +37,8 @@ const jwtValidation = async (req, res, next) => {
     let token
     const authHeader = req.headers.authorization || req.headers.Authorization
 
-
     const cookies = req.cookies
     if (!cookies?.refreshToken) return res.status(403).json({ message: 'Session Expired' }) // Logout user when refresh token is expired
-
 
     if (!authHeader?.startsWith('Bearer ')) {
         return res.status(401).json({ message: 'Unauthorized' })
@@ -72,7 +70,6 @@ const jwtValidation = async (req, res, next) => {
             const isExpired = isTokenExpired(token)
 
             if (isExpired) {
-
                 return res.status(401).json({ message: 'Token Expired' })
                 // request new access token using refreshToken
                 const decoded = jwt.verify(cookies.refreshToken, process.env.REFRESH_TOKEN_SECRET)
@@ -83,7 +80,6 @@ const jwtValidation = async (req, res, next) => {
             }
 
             next()
-
         } catch (error) {
             // console.log(error);
             res.status(401).json({ message: 'Unauthorized' })

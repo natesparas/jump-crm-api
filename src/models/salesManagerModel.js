@@ -58,12 +58,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         monthly_target: {
             type: DataTypes.FLOAT(17, 2),
-            defaultValue: 0.00
+            defaultValue: 0.0
         },
         type: {
             type: DataTypes.STRING
         }
     })
 
-    return salesManager;
+    return salesManager
 }
