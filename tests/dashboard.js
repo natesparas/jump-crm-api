@@ -35,7 +35,7 @@ describe('Dashboard Endpoint Unit-Testing', () => {
         // const response = await request(app).get('/api/dashboard/getTotalSales').query({ day: 0 });
         const response = await dashboardTotalSales({ day: 0 })
         // expect(response.status).to.equal(200);
-        expect(response).to.be.an('object');
+        expect(response).to.be.an('array');
     });
 
     it('should get the sales per account manager', async () => {
