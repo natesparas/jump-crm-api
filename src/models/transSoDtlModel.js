@@ -4,13 +4,13 @@ const transSoHdrModel = require("./transSoHdrModel");
 module.exports = (sequelize, DataTypes) => {
     const trans_so_dtl = sequelize.define('trans_so_dtl', {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         so_no: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
             references: {
                 model: transSoHdrModel,
                 key: 'so_no' // The primary key 'id' in the trans_so_hdr

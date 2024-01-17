@@ -34,8 +34,12 @@ app.use(cors({
     origin: process.env.BASE_URL,
     credentials: true
 }))
+
+// parse requests of content-type - application/json
 app.use(express.json())
 app.use(cookieParser())
+
+// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }))
 
 // app.use('/', express.static(path.join(__dirname, 'public')))
