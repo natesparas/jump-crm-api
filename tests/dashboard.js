@@ -13,12 +13,12 @@ const { mockSalesPerSKU } = require('./mockData/dashboardSalesPerSKU')
 const transSOHDR = db.transSOHDR
 
 describe('Dashboard Endpoint Unit-Testing', () => {
-    before(() => {
-        // Mock the behavior of jwt.verify to always return a valid user
-        sinon.stub(jwt, 'verify').callsFake((token, secret, callback) => {
-            callback(null, { id: 'mockUserId' }) // Assuming the token is always valid for the mock user
-        })
-    })
+before(() => {
+// Mock the behavior of jwt.verify to always return a valid user
+sinon.stub(jwt, 'verify').callsFake((token, secret, callback) => {
+    callback(null, { id: 'mockUserId' }) // Assuming the token is always valid for the mock user
+})
+})
 
     after(() => {
         // Restore the original authentication middleware after tests
